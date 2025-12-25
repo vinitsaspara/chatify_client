@@ -4,7 +4,7 @@ let socket = null;
 
 export const connectSocket = (userId) => {
     // console.log(userId)
-    socket = io(import.meta.env.VITE_API_URL, {
+    socket = io("https://chatify-server-1-t3ob.onrender.com", {
         query: { userId },
     })
 
