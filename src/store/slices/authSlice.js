@@ -32,7 +32,7 @@ export const logout = createAsyncThunk("user/sign-out", async (_, thunkAPI) => {
 export const login = createAsyncThunk("user/sign-in", async (data, thunkAPI) => {
     try {
         const res = await axiosInstance.post("https://chatify-server-1-t3ob.onrender.com/api/v1/user/sign-in", data)
-        connectSocket(res.data);
+        connectSocket(res.data?.user?._id);
         toast.success("Logged in successfully")
         return res.data.user
     } catch (error) {
@@ -43,8 +43,9 @@ export const login = createAsyncThunk("user/sign-in", async (data, thunkAPI) => 
 
 export const signup = createAsyncThunk("user/sign-up", async (data, thunkAPI) => {
     try {
-        const res = await axiosInstance.post("/user/sign-up", data)
-        connectSocket(res.data)
+        const res = await axiosInstance.post("https://chatify-server-1-t3ob.onrender.com/api/v1/user/sign-up", data)
+        connectSocket(res.data?.user?._id)
+        // console.log(res.data?.user?._id)
         toast.success("Account created sucessfully")
         return res.data
     } catch (error) {
