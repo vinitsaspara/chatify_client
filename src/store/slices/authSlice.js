@@ -31,7 +31,7 @@ export const logout = createAsyncThunk("user/sign-out", async (_, thunkAPI) => {
 
 export const login = createAsyncThunk("user/sign-in", async (data, thunkAPI) => {
     try {
-        const res = await axiosInstance.post("/user/sign-in", data)
+        const res = await axiosInstance.post("https://chatify-server-1-t3ob.onrender.com/api/v1/user/sign-in", data)
         connectSocket(res.data);
         toast.success("Logged in successfully")
         return res.data.user
