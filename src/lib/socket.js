@@ -4,7 +4,7 @@ let socket = null;
 
 export const connectSocket = (userId) => {
     // console.log(userId)
-    socket = io(import.meta.env.MODE === "development" ? "http://localhost:4000" : "/", {
+    socket = io(import.meta.env.MODE === "development" ? "https://chatify-server-1-t3ob.onrender.com/api/v1" : "/", {
         query: { userId },
     })
 
